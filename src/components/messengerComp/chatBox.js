@@ -13,6 +13,7 @@ function deleteConversation(id) {
     console.log("id",id)
     return axios.post(`${baseURL}/chat/deleteConversation`,{id})
 }
+
 function ChatBox({user,selectedFriend}) {
     const queryClient=useQueryClient()
     const {socket}=useContext(UserContext)
@@ -169,13 +170,16 @@ function ChatBox({user,selectedFriend}) {
 function MessageContainer({messages,RecievedMessages,ownMessages,DisplayMessageArr}) {
     // console.log("DisplayMessageArr",DisplayMessageArr)
     const {user}=useContext(UserContext)
-    const scrollDiv=useRef()
+    useEffect(() => {
+        scrollBottom();
+    }, []);
     function scrollBottom(){
         if(!scrollDiv.current){
             return
         }
         scrollDiv.current.scrollTop = scrollDiv.current.scrollHeight
     }
+    const scrollDiv=useRef()
     return ( <><div ref={scrollDiv} className="message_container">
     
     {messages.map((msg)=>{

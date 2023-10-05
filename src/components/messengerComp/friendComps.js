@@ -1,6 +1,4 @@
-import { useContext, useState } from "react";
-import ListGroupItem from "react-bootstrap/esm/ListGroupItem";
-import ListGroup from "react-bootstrap/esm/ListGroupItem";
+import { useContext, useRef, useState } from "react";
 import { UserContext } from "../Main";
 import { useFetchFriends } from "../../utils/reactQuery";
 import defaultUserImage from "../../assets/defaultUserImage.png"
@@ -26,30 +24,27 @@ export function Frienditem({item}) {
 
 export function FriendList({userID}) {
     const {data:friends,isLoading,isError } = useFetchFriends(userID)
+    const [filterSearch,setFilterSearch] = useState("")
+    
     if(isLoading){
         return <p>Loading friends ...</p>
     }
     if(isError){
         return <p>Error Occured.</p>
     }
+    const filteredFriends=friends?.filter((friend)=>{
+        return friend.name.toLowerCase().includes(filterSearch)
+    })
     return ( 
     <div>
-        <SearchFriend friends={friends}/>
-        {friends?.map((item)=>{
+        <div style={{display:"flex",position:"relative",alignItems:"center"}}>
+            
+            <Form.Control onChange={(e)=>{setFilterSearch(e.target.value)}} value={filterSearch} style={{border:"0px ",borderBottom:"1px solid gray",borderRadius:"0.5rem",padding:"10px"}} placeholder="Search for chats"/>
+            <div style={{position:"absolute",right:"0",width:"20px",aspectRatio:"1"}} ><img  style={{height:"100%",width:"100%"}} src={searchImg} alt="search "/></div>
+        </div>
+        {filteredFriends?.map((item)=>{
             return <Frienditem key={item._id}  item={item}/>
         })}
     </div>
      );
 }
-
-function SearchFriend({friends}) {
-    const [showSearchBar,setShowSearchBar] = useState(false)
-    return(
-        <div style={{display:"flex",position:"relative",alignItems:"center"}}>
-            
-            <Form.Control style={{borderTop:"0",borderLeft:"0",borderRight:"0"}} placeholder="Search for chats"/>
-            <div style={{position:"absolute",right:"0",width:"20px",aspectRatio:"1"}} onClick={()=>{setShowSearchBar((prevState)=>!prevState)}}><img  style={{height:"100%",width:"100%"}} src={searchImg} alt="search "/></div>
-        </div>
-    )
-}
-// {transition:"all 1000ms",position:"absolute",cursor:"pointer",top:"0"}
