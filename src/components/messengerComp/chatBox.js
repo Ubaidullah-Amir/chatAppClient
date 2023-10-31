@@ -106,9 +106,8 @@ function ChatBox({user,selectedFriend}) {
     }
     // console.log("ownMsgArr",ownMessages)
     // console.log("recievedMsg",RecievedMessages)
-    // console.log("chat conversation",data.chat.conversation)
     return ( 
-        <>
+        <div id="chatBox">
             <h3>{selectedFriend.name}{isTyping ?<p>(typing)</p>:<></>}</h3>
             <Button onClick={()=>{
                 const confirmText= "Do you want to delete Chat.\n NOTE: For transparency reasons deleting chat deletes it from both sides.Do you wish to continue?"
@@ -118,7 +117,7 @@ function ChatBox({user,selectedFriend}) {
                     deleteChat(data.chat._id)
                 }
                 }}>Clear chat</Button>
-            <div className="chat_box">
+            <div >
                 {/* RecievedMessages &&  ownMessages are not used are combined with DisplayMessageArr */}
                     <MessageContainer 
                     DisplayMessageArr={DisplayMessageArr}
@@ -162,7 +161,7 @@ function ChatBox({user,selectedFriend}) {
                     <Button type="submit"> Send</Button>
                     </form>
             </div>
-        </>
+        </div>
      );
 }
 

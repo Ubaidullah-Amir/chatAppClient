@@ -50,7 +50,6 @@ export function useRequests(id) {
     return useQuery("requests",()=>(fetchRequest(id)))
 }
 async function fetchRequest(user_id) {
-    console.log("fetching request",user_id)
     const request= await axios.post(`${baseURL}/request/getrequests`,{
         id:user_id
     })

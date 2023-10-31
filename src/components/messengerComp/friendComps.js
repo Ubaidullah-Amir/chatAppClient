@@ -8,13 +8,13 @@ import Form from 'react-bootstrap/Form';
 export function Frienditem({item}) {
     const {setSelectedFriend}=useContext(UserContext)
     return (
-        <div className="chat_item" style={{paddingTop:"32px",paddingBottom:"32px",display:"flex",justifyContent:"space-around",alignItems:"center",maxHeight:"50px"}} onClick={()=>{
+        <div className="chat_item" style={{display:"flex",gap:"5px",alignItems:"center",padding:"10px"}} onClick={()=>{
             setSelectedFriend(item)}}>
             
-            <div style={{width:"50px",aspectRatio:"1",flexShrink:"1"}}>
+            <div style={{width:"40px",height:"40px"}}>
                 {item.image?
-                    <img style={{height:"100%",width:"100%"}} src={item.image} alt="profile image" />
-                    :<img style={{height:"100%",width:"100%"}} src={defaultUserImage} alt="profile image" />
+                    <img style={{height:"100%",width:"100%",borderRadius:"50%",objectFit:"cover"}} src={item.image} alt="profile image" />
+                    :<img style={{height:"100%",width:"100%",borderRadius:"50%",objectFit:"cover"}} src={defaultUserImage} alt="profile image" />
                 }
             </div>
             <p style={{flexShrink:"0",margin:"0"}} >{item.name}</p>

@@ -8,12 +8,15 @@
     padding: 0.3em 0.5em;
     font-size: 1.2em;
     font-weight: 600;
-    border-bottom: 1px solid rgb(201, 201, 201);
-    border-top: 1px solid rgb(196, 196, 196);
+    border-bottom: 1px solid rgb(196, 196, 196);
     cursor:pointer
 }
 .chat_item:hover{
-    background-color: rgba(206, 206, 206, 0.527);
+    background-color: rgba(238, 238, 238, 0.521);
+    color: blue;
+}
+.chat_item:hover img{
+    transform:scale(1.1)
 }
 .send{
     background-color:rgb(158, 1, 158) ;
@@ -51,4 +54,85 @@
 }
 .input_container{
     display:flex
+}
+/* messenger  */
+.messengerContainer{
+  position: relative;
+  padding: 5px;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
+@media (max-width: 600px) {
+  .messengerContainer{
+        grid-template-columns:1fr;
+  }
+  
+}
+/* menu button */
+.menubtn .hamburger { 
+  align-self: flex-end;
+}
+
+.menubtn label {
+  cursor: pointer;
+  color:""
+}
+
+.menubtn input[type=checkbox] + label {
+  .icon-bar {
+    display: block;
+    width: 30px;
+    height: 4px;
+    background-color: #cccccc;
+    margin: 4px;
+    transition: all 0.2s;
+  }
+  .top-bar {
+    transform: rotate(0);
+  }
+  .middle-bar {
+    opacity: 1;
+  }
+}
+
+.menubtn input[type=checkbox]:checked + label {
+  .top-bar {
+    transform: rotate(45deg);
+    transform-origin: 10% 10%;
+  }
+  .middle-bar {
+    opacity: 0;
+  }
+  .bottom-bar {
+    transform: rotate(-45deg);
+    transform-origin: 10% 90%;
+  }
+}
+@media  (min-width: 600px) {
+  .menubtn {
+    display: none;
+  }
+}
+/* for large  screen */
+.chatComp{
+  /* remove any transforms */
+  transform: translate(0);
+  background-color: white;
+  z-index: 10;
+}
+@media (max-width: 600px) {
+  *{
+    font-size: 13px;
+  }
+  .chatComp{
+    position: absolute;
+    width: 200px;
+    height: 100vh;
+    transform: translate(-100%);
+  }
+  .slideChatComp{
+    transform: translate(0%);
+  }
+  
 }

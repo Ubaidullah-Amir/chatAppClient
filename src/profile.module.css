@@ -1,0 +1,17 @@
+.profileContainer{
+      display:flex;
+      margin: auto;
+      max-width: 500px;
+      width: 60%;
+      min-width: 300px;
+      padding: 5px;
+      border: 1px solid black;
+      border-radius: 10px;
+      margin-top: 10px;
+      gap: 15px;
+}
+.profileContainer .child{
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+}

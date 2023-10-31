@@ -5,36 +5,24 @@ import NotFound from "./notfound";
 import Login from "./login";
 import SignUp from "./signup";
 import Request from "./request";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import io from "socket.io-client"
 import FindPeople from "./find";
 import Profile from "./profile";
 const socket = io.connect("http://localhost:3030")
 export const UserContext = createContext()
+export const MenuContext = createContext()
 
-
-// const initialState={
-//     user:"",
-//     selectedFriend:""
-// }
-// function reducer(state,action) {
-//     switch (action.type) {
-//         case "UserLoggedIn":
-//             return {...state,user:action.payload.user}
-//             break;
-    
-//         default:
-//             break;
-//     }
-// }
 
 export function MainComp() {
     const [user,setUser]=useState()
+    const [menuOpen,setmenuOpen] = useState(false)
     const [selectedFriend,setSelectedFriend]=useState()
     if(user!=null){
         socket.emit("userOnline",user._id)
     }
     return ( <>
+        <MenuContext.Provider value={{menuOpen,setmenuOpen}}>
         <NavBar disable={!user}/>
         <UserContext.Provider value={{user:user,setUser:setUser,selectedFriend:selectedFriend,setSelectedFriend:setSelectedFriend,socket}}>
         <Routes>
@@ -47,7 +35,7 @@ export function MainComp() {
             <Route path="*" element={<NotFound/>}/>
         </Routes>
         </UserContext.Provider>
-
+        </MenuContext.Provider>
 
         </>
      );

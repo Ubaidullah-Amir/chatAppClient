@@ -15,7 +15,6 @@ import { UserContext } from './Main'
 const baseURL="http://localhost:3030"
 
 function funcPostLoginUser(user_obj) {
-  console.log("funcPostLoginUser",user_obj)
   return axios.post(`${baseURL}/user/login`,user_obj)
 }
 
