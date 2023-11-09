@@ -2,7 +2,7 @@
 import { useQuery} from "react-query"
 import axios from  "axios"
 
-const baseURL="http://localhost:3030"
+const baseURL=  process.env.REACT_APP_API_URL
 // Login : posting user obj 
 export function postUserQuery(onSuccess,onError) {
     return null

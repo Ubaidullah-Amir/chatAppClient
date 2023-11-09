@@ -9,7 +9,7 @@ import { createContext, useState } from "react";
 import io from "socket.io-client"
 import FindPeople from "./find";
 import Profile from "./profile";
-const socket = io.connect("http://localhost:3030")
+const socket = io.connect(process.env.REACT_APP_API_URL)
 export const UserContext = createContext()
 export const MenuContext = createContext()
 

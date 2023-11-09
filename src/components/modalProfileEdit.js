@@ -6,7 +6,7 @@ import FormControl from './formComponents/FormControl'
 import { useMutation } from 'react-query'
 import { Form, Formik } from 'formik'
 import axios from 'axios'
-const baseURL="http://localhost:3030"
+const baseURL=process.env.REACT_APP_API_URL
 
 function funcPostModifyUser(formData) {
       return axios.post(`${baseURL}/user/modify`, formData, {

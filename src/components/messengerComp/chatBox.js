@@ -4,7 +4,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useMutation, useQueryClient } from "react-query";
 import { UserContext } from "../Main";
-const baseURL="http://localhost:3030"
+const baseURL=process.env.REACT_APP_API_URL
 
 function funcPostMsg(req_obj) {
     return axios.post(`${baseURL}/chat/add_msg`,req_obj)
@@ -108,7 +108,7 @@ function ChatBox({user,selectedFriend}) {
     // console.log("recievedMsg",RecievedMessages)
     return ( 
         <div id="chatBox">
-            <h3>{selectedFriend.name}{isTyping ?<p>(typing)</p>:<></>}</h3>
+            <h3>{selectedFriend.name}{isTyping ?<span> (typing)</span>:<></>}</h3>
             <Button onClick={()=>{
                 const confirmText= "Do you want to delete Chat.\n NOTE: For transparency reasons deleting chat deletes it from both sides.Do you wish to continue?"
                 const confirm = window.confirm(confirmText);

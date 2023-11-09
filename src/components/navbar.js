@@ -15,7 +15,7 @@ function NavBar({disable}) {
   return (
     
     <>
-      <Navbar bg="dark" variant="dark">
+      <Navbar expand="lg" bg="dark" variant="dark">
         <Container>
           <div className="menubtn" style={location.pathname != "/" ? {display:'none'}:{}}>
             <input id="dropdown" className="input-box" type="checkbox" checked={menuOpen} onChange = {handleChange} style={{display:"none"}}/>
@@ -29,13 +29,17 @@ function NavBar({disable}) {
             </label>
           </div>
           <Navbar.Brand as={Link} disabled={disable} to="/">ChatApp</Navbar.Brand>
-          <Nav className="me-auto">
-            
-            <Nav.Link as={Link} disabled={disable}  to="find">Find People</Nav.Link>
-            <Nav.Link as={Link}  to="login">Login</Nav.Link>
-            <Nav.Link as={Link} disabled={disable} to="request">Requests</Nav.Link>
-            <Nav.Link as={Link} disabled={disable} to="porfile">Porfile</Nav.Link>
-          </Nav>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              
+              <Nav.Link as={Link} disabled={disable}  to="find">Find People</Nav.Link>
+              
+              <Nav.Link as={Link} disabled={disable} to="request">Requests</Nav.Link>
+              <Nav.Link as={Link} disabled={disable} to="porfile">Porfile</Nav.Link>
+              <Nav.Link as={Link}  to="login">Login</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
       

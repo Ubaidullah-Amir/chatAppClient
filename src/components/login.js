@@ -12,7 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from  "axios"
 import { UserContext } from './Main'
 
-const baseURL="http://localhost:3030"
+const baseURL=process.env.REACT_APP_API_URL
 
 function funcPostLoginUser(user_obj) {
   return axios.post(`${baseURL}/user/login`,user_obj)
@@ -70,7 +70,7 @@ export default function Login() {
 
     const validationSchema=Yup.object({
         password:Yup.string().required("Please enter password"),
-        email:Yup.string().required("Please Enter Email")
+        email:Yup.string().email().required("Please Enter Email")
     })
     const onSubmit=(values,onSubmitProps)=>{
       mutate(values)
@@ -82,7 +82,7 @@ export default function Login() {
     
 
   return (
-    <div>
+    <div className='formContainer'>
         {isLoading?<p>it's loading! </p>:null}
         {isError?<p className="error-text">{error?.response.data.Msg} try again</p>:null}
         {/* {fetchUserIsFetching?<p>wait your request data is beign fetch</p>:null}
@@ -123,7 +123,7 @@ export default function Login() {
               errorMsg={formik.errors.password}
               />
               {/* <Button type='submit' disabled={!( formik.isValid && formik.submitCount<3 && !formik.isSubmitting)}>Add User</Button> */}
-              <Button type='submit' >Login</Button>
+              <Button type='submit' disabled={!(formik.isValid) || !(formik.dirty)} >Login</Button>
               </fieldset>
         </Form>
     )

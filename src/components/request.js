@@ -5,7 +5,9 @@ import { UserContext } from "./Main";
 import { Button } from "react-bootstrap";
 import { useMutation } from "react-query";
 import axios from "axios";
-const baseURL="http://localhost:3030"
+import defaultUserImage from "../assets/defaultUserImage.png"
+
+const baseURL=process.env.REACT_APP_API_URL
 function funcRequestAcceptor(req_obj) {
     return axios.post(`${baseURL}/request/requestapproved`,req_obj)
 }
@@ -48,7 +50,7 @@ function Requests() {
         if(arrRequestAccepted.includes(item.sender._id)){
             return 
         }
-        return <Request user_id={user._id} mutate={mutate} key={item._id} friend_id={item.sender._id} name={item.sender.name}/>
+        return <Request user_id={user._id} mutate={mutate} key={item._id} friend_id={item.sender._id} friend_name={item.sender.name} friend_email={item.sender.email} friend_image={item.sender.image}/>
         // Sender => friend
         // reciever => user 
         })
@@ -61,15 +63,31 @@ function Requests() {
      );
      
 }
-function Request({name,friend_id,mutate,user_id}) {
+function Request({mutate,user_id,friend_id,friend_name,friend_email,friend_image}) {
     const req_obj={
         currentUser_id:user_id,
         friend_id:friend_id
     }
     return (
     <div>
-        <p>Name :{name}</p>
-        <Button onClick={()=>{mutate(req_obj)}}>Accept</Button>
+        <div  className="userCard" style={{fontSize:"13px",borderColor:"#cfcfcf"}}>
+                <div className="child">
+                        <div style={{width:"50px",height:"50px"}}>
+                            {friend_image?
+                                <img style={{height:"100%",width:"100%",objectFit:"cover"}} className='rounded-circle' src={friend_image} alt="profile image" />
+                                :<img style={{height:"100%",width:"100%"}} className='rounded-circle' src={defaultUserImage} alt="profile image" />
+                            }
+                        </div>
+                </div>
+                    
+                <div className="child" style={{gap:0}}>
+                    <p >Username :<span style={{fontWeight:"bold"}}>{friend_name}</span></p>
+                    <p >Email :<span style={{fontWeight:"bold"}}>{friend_email}</span></p>
+                    <Button onClick={()=>{mutate(req_obj)}}>Accept Request</Button>
+                </div>
+            
+            </div>
+        
     </div>)
     
 }

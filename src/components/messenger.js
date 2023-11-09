@@ -28,7 +28,7 @@ function Messenger() {
         </div>
         </>
     }else{
-        chatbox=<ChatBox user={user} selectedFriend={selectedFriend}/>
+        chatbox=<ChatBox user={user} key={selectedFriend._id} selectedFriend={selectedFriend}/>
     }
     return ( 
         <div className="messengerContainer">
