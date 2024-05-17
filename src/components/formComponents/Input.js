@@ -7,7 +7,7 @@ export default function Input({label,name,...rest}) {
     <div className='formDiv'>
       <label htmlFor={name}>{label}</label>
       <Field id={name} name={name} {...rest}/>
-      <ErrorMessage name={name} component={TextError}/>
+      <ErrorMessage  name={name} component={TextError}/>
     </div>
   )
 }

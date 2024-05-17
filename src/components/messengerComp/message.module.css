@@ -1,0 +1,133 @@
+
+.userNameHeading{
+    font-family: sans-serif;
+    font-size: 1.4em;
+    font-weight: 600;
+    margin: 0;
+}
+.userNameHeading span{
+    font-size: 0.7em;
+    
+}
+.topContainer{
+    padding:0 1em ;
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon{
+    font-size: 1.5em;
+}
+.cancelMediaIcon{
+  position: absolute;
+  translate:-30% 30% ;
+  right: 0;
+  top: 0;
+}
+
+
+
+.message_container{
+    padding: 0.5em;
+    height:70vh;
+    background-color: rgba(224, 224, 224, 0.082);
+    display: flex;
+    flex-direction: column;
+    gap:0.8em;
+    overflow-y: scroll;
+    border-radius: 0.5em;
+}
+.message_container p{
+    margin: 0;
+}
+
+
+  
+
+  
+  /* Custom scrollbar styling */
+  .message_container::-webkit-scrollbar {
+    width: 10px; /* Set the width of the scrollbar */
+    border-radius: 5px;
+    background-color: #4d4d4d28;
+  }
+  
+  .message_container::-webkit-scrollbar-thumb {
+    background: #b9b9b9; /* Set the color of the scrollbar thumb */
+    border-radius: 15px; /* Set the radius of the scrollbar thumb */
+  }
+  
+  .message_container::-webkit-scrollbar-track {
+    /* background: #33c463; Set the color of the scrollbar track */
+    background-color: transparent;
+  }
+  
+
+  .message_container:hover::-webkit-scrollbar-thumb {
+    background: #8d8d8d; /* Change color of thumb on hover */
+  }
+  
+.send{
+    background-color:rgb(158, 1, 158) ;
+    color: white;
+    font-size: 1.1em;
+    max-width: 60%;
+    align-self: flex-start;
+    padding: 0.3em 0.5em;
+    border-radius: 0.5em;
+}
+.recived{
+    background-color: rgba(4, 8, 224, 0.822);
+    color: white;
+    font-size: 1.1em;
+    max-width: 60%;
+    align-self: flex-end;
+    padding: 0.3em 0.5em;
+    border-radius: 0.5em;
+}
+
+.input_container input{
+    width: 100%;
+    padding: 0.5em;
+    border-radius: 0.3em;
+    border: 0.15em solid rgb(124, 124, 124);
+    outline: none;
+}
+.input_container{
+    display:flex;
+    gap: 0.3em;
+    position: relative;
+}
+
+.absUploadMenu{
+  bottom: 100%;
+  position: absolute;
+  background-color: rgb(214, 214, 214);
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.imageViewer{
+  max-height: 300px;
+  height: 90%;
+  
+  
+}
+.PdfViewer{
+  width: 80%;
+  height: 90%;
+}
+.videoViewer{
+  width: 80%;
+  height: 90%;
+  object-fit: cover;
+  max-width: 450px;
+
+}
+
+.displayImage{
+  width: 100%;
+  max-height: 200px;
+}

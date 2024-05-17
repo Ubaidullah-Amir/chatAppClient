@@ -11,7 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 // import {PostUserQuery,FetchUserQuery} from "../../utilities/UseMutation"
 import axios from  "axios"
 import { UserContext } from './Main'
-
+import styles from "./login.module.css"
 const baseURL=process.env.REACT_APP_API_URL
 
 function funcPostLoginUser(user_obj) {
@@ -87,6 +87,7 @@ export default function Login() {
         {isError?<p className="error-text">{error?.response.data.Msg} try again</p>:null}
         {/* {fetchUserIsFetching?<p>wait your request data is beign fetch</p>:null}
         {fetchUserIsError?<p>your data not found</p>:null} */}
+        
       <Formik 
     //   initialValues={loadedFormValues ||initialValues } 
         initialValues={initialValues } 
@@ -95,9 +96,11 @@ export default function Login() {
       >
     {formik=>{
       return (
-        <Form >
-          <fieldset className="container" >
+        <Form  className={styles.card}>
+          <h2>Login</h2>
+          <fieldset  >
             <FormControl
+              className={styles.input}
               control="bootstarpInput" 
               name="email"
               label="Email"
@@ -111,6 +114,7 @@ export default function Login() {
               />
               
               <FormControl
+              className={styles.input}
               type="password"
               control="bootstarpInput" 
               name="password"
@@ -123,14 +127,15 @@ export default function Login() {
               errorMsg={formik.errors.password}
               />
               {/* <Button type='submit' disabled={!( formik.isValid && formik.submitCount<3 && !formik.isSubmitting)}>Add User</Button> */}
-              <Button type='submit' disabled={!(formik.isValid) || !(formik.dirty)} >Login</Button>
+              <button className = {styles.button} type='submit' disabled={!(formik.isValid) || !(formik.dirty)} >Login</button>
               </fieldset>
+              <p>don't have an account <Link to="/signup">Sign Up</Link></p>
         </Form>
     )
   }}
         
       </Formik>
-      <p>don't have an account <Link to="/signup">Sign Up</Link></p>
+      
       </div>
   )
 }

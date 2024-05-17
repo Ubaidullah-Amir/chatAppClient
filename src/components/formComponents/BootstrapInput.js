@@ -13,7 +13,7 @@ export default function BootstrapInput(props) {
           value={value}
           />
           {touched && isError ?(
-          <Form.Text className="text-muted error-text">
+          <Form.Text  className="text-muted error-text">
             {errorMsg}
           </Form.Text>):""}
       </Form.Group>

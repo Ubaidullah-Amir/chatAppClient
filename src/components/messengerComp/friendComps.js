@@ -6,7 +6,7 @@ import searchImg from "../../assets/search.png"
 import Form from 'react-bootstrap/Form';
 
 export function Frienditem({item}) {
-    const {setSelectedFriend}=useContext(UserContext)
+    const {setSelectedFriend,selectedFriend}=useContext(UserContext)
     return (
         <div className="chat_item" style={{display:"flex",gap:"5px",alignItems:"center",padding:"10px"}} onClick={()=>{
             setSelectedFriend(item)}}>
@@ -17,7 +17,7 @@ export function Frienditem({item}) {
                     :<img style={{height:"100%",width:"100%",borderRadius:"50%",objectFit:"cover"}} src={defaultUserImage} alt="profile image" />
                 }
             </div>
-            <p style={{flexShrink:"0",margin:"0"}} >{item.name}</p>
+            <p className={selectedFriend._id === item._id ?"selectedFriendinList":""} style={{flexShrink:"0",margin:"0"}} >{item.name}</p>
         </div>
      );
 }
@@ -39,7 +39,7 @@ export function FriendList({userID}) {
     <div>
         <div style={{display:"flex",position:"relative",alignItems:"center"}}>
             
-            <Form.Control onChange={(e)=>{setFilterSearch(e.target.value)}} value={filterSearch} style={{border:"0px ",borderBottom:"1px solid gray",borderRadius:"0.5rem",padding:"10px"}} placeholder="Search for chats"/>
+            <Form.Control onChange={(e)=>{setFilterSearch(e.target.value)}} value={filterSearch} style={{border:"0px ",borderBottom:"1px solid gray",borderRadius:"0rem",padding:"10px"}} placeholder="Search for chats"/>
             <div style={{position:"absolute",right:"0",width:"20px",aspectRatio:"1"}} ><img  style={{height:"100%",width:"100%"}} src={searchImg} alt="search "/></div>
         </div>
         {filteredFriends?.map((item)=>{

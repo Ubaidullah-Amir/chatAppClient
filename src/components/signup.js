@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import axios from  "axios"
 import { UserContext } from './Main'
 import { Link } from 'react-router-dom/dist/umd/react-router-dom.development'
-
+import styles from "./login.module.css"
 const baseURL=process.env.REACT_APP_API_URL
 
 function funcPostSignUpUser(user_obj) {
@@ -67,9 +67,11 @@ export default function SignUp() {
     {formik=>{
       console.log(formik)
       return (
-        <Form >
+        <Form className={styles.card}>
+          <h2>Sign Up</h2>
           <fieldset className="container" >
           <FormControl
+          className={styles.input}
               control="bootstarpInput" 
               name="name"
               label=" User Name"
@@ -82,6 +84,7 @@ export default function SignUp() {
               errorMsg={formik.errors.name}
               />
             <FormControl
+            className={styles.input}
               control="bootstarpInput" 
               name="email"
               label="Email"
@@ -95,6 +98,7 @@ export default function SignUp() {
               />
               
               <FormControl
+              className={styles.input}
               type="password"
               control="bootstarpInput" 
               name="password"
@@ -107,14 +111,15 @@ export default function SignUp() {
               errorMsg={formik.errors.password}
               />
               
-              <Button type='submit' disabled={!(formik.isValid) || !(formik.dirty)} >Sign Up</Button>
+              <button className = {styles.button} type='submit' disabled={!(formik.isValid) || !(formik.dirty)} >Sign Up</button>
               </fieldset>
+              <p>Already have an account <Link to="/login">Login</Link></p>
         </Form>
     )
   }}
         
       </Formik>
-      <p>Already have an account <Link to="/login">Login</Link></p>
+      
       </div>
   )
 }
