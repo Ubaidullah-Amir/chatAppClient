@@ -9,7 +9,11 @@ import { createContext, useState } from "react";
 import io from "socket.io-client"
 import FindPeople from "./find";
 import Profile from "./profile";
-const socket = io.connect(process.env.REACT_APP_API_URL)
+const socket = io.connect(process.env.REACT_APP_API_URL, {
+    transports: ['websocket'],
+    secure: true,  // Ensure secure connection
+    withCredentials: true
+})
 export const UserContext = createContext()
 export const MenuContext = createContext()
 
