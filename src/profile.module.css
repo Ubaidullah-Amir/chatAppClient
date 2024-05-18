@@ -1,17 +1,38 @@
 .profileContainer{
-      display:flex;
-      margin: auto;
-      max-width: 500px;
-      width: 60%;
-      min-width: 300px;
-      padding: 5px;
-      border: 1px solid black;
-      border-radius: 10px;
-      margin-top: 10px;
-      gap: 15px;
-}
-.profileContainer .child{
       display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      
+}
+.profileCard{
+      box-shadow: 0.5em 0.5em 0.8em gray;
+      display: flex;
+      align-items: center;
       flex-direction: column;
-      gap: 3px;
+      padding-bottom: 0.8em;
+}
+.profileContainer img{
+      width: 100%;
+      max-width: 12.5em;
+      max-height: 18em;
+}
+.profileContainer p{
+      margin: 0;
+}
+.NameText{
+      color: rgb(0, 0, 0);
+      font-weight: 700;
+}
+.EmailText{
+      color: gray;
+      font-weight: 500;
+}
+.friendContainer{
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 0.8em;
+      gap:0.9em;
+      justify-content:center
+
 }

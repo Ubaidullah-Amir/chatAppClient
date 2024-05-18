@@ -38,11 +38,12 @@ async function fetchConversation(user_id,friend_id) {
 }
 
 // getting users
-export function useUsers() {
-    return useQuery("users",()=>(fetchUsers()))
+export function useUsers(filter) {
+    return useQuery(["users", filter.search], () => fetchUsers(filter))
 }
-async function fetchUsers() {
-    const request= await axios.get(`${baseURL}/user/getusers`)
+async function fetchUsers(filter) {
+    const query = new URLSearchParams(filter).toString();
+    const request= await axios.get(`${baseURL}/user/getusers?${query}`)
     return request.data
 }
 // getting request

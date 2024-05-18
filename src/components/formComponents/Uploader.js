@@ -5,11 +5,12 @@ export default function Uploader({name,handleOnImageChange,imageSrc,touched,isEr
   return (
 
     <div className='formDiv'>
-      <input id="file" accept=".jpg, .jpeg, .png" name="file" type="file" onChange={handleOnImageChange} onBlur={onBlur} />
-      {/* image is either user current image or if changed to selected File so createUrl function */}
       {typeof(imageSrc) != "string" ? (
-        <img src={URL.createObjectURL(imageSrc)} width="200"/>
-      ):<img src={imageSrc} width="200"/>}
+        <img className='imgUploadProfile' src={URL.createObjectURL(imageSrc)} width="200"/>
+      ):<img className='imgUploadProfile' src={imageSrc} width="200"/>}
+      
+      <input className='uploadInputField' id="file" accept=".jpg, .jpeg, .png" name="file" type="file" onChange={handleOnImageChange} onBlur={onBlur} />
+      {/* image is either user current image or if changed to selected File so createUrl function */}
       
       {touched && isError ?(
           <Form.Text className="text-muted error-text">
