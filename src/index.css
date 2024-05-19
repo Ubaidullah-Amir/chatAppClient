@@ -95,7 +95,7 @@
   .chatComp{
     position: absolute;
     width: 200px;
-    height: 100vh;
+    height: 95vh;
     transform: translate(-100%);
   }
   .slideChatComp{

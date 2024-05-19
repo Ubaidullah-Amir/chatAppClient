@@ -33,7 +33,7 @@ function Messenger() {
     return ( 
         <div className="messengerContainer">
             {/* to close portal */}
-            <div style={menuOpen?{position:"absolute",width:"100vw",height:"100vh",backgroundColor:"#8080805c",zIndex:1}:{display:"none"}} onClick={()=>{setmenuOpen(false)}}></div>
+            <div style={menuOpen?{position:"absolute",width:"100vw",height:"95vh",backgroundColor:"#8080805c",zIndex:1}:{display:"none"}} onClick={()=>{setmenuOpen(false)}}></div>
             
             <ChatComp user={user} />
             {chatbox} 
