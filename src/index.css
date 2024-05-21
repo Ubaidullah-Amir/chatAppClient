@@ -37,7 +37,7 @@
   
 }
 /* menu button */
-.menubtn .hamburger { 
+/* .menubtn .hamburger { 
   align-self: flex-end;
 }
 
@@ -80,7 +80,53 @@
   .menubtn {
     display: none;
   }
+} */
+.menubtn .hamburger { 
+  align-self: flex-end;
 }
+
+.menubtn label {
+  cursor: pointer;
+  color: ""; /* Not sure what color value you want here */
+}
+
+.menubtn input[type=checkbox] + label .icon-bar {
+  display: block;
+  width: 30px;
+  height: 4px;
+  background-color: #cccccc;
+  margin: 4px;
+  transition: all 0.2s;
+}
+
+.menubtn input[type=checkbox] + label .top-bar {
+  transform: rotate(0);
+}
+
+.menubtn input[type=checkbox] + label .middle-bar {
+  opacity: 1;
+}
+
+.menubtn input[type=checkbox]:checked + label .top-bar {
+  transform: rotate(45deg);
+  transform-origin: 10% 10%;
+}
+
+.menubtn input[type=checkbox]:checked + label .middle-bar {
+  opacity: 0;
+}
+
+.menubtn input[type=checkbox]:checked + label .bottom-bar {
+  transform: rotate(-45deg);
+  transform-origin: 10% 90%;
+}
+
+@media (min-width: 600px) {
+  .menubtn {
+    display: none;
+  }
+}
+
 /* for large  screen */
 .chatComp{
   /* remove any transforms */
