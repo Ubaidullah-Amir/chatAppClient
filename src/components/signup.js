@@ -65,7 +65,6 @@ export default function SignUp() {
         validationSchema={validationSchema} 
       >
     {formik=>{
-      console.log(formik)
       return (
         <Form className={styles.card}>
           <h2>Sign Up</h2>

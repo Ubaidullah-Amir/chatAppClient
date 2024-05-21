@@ -278,7 +278,7 @@ function MessageContainer({messages,DisplayMessageArr}) {
         if(!scrollDiv.current){
             return
         }
-        scrollDiv.current.scrollTop = scrollDiv.current.scrollHeight+1000
+        scrollDiv.current.scrollTop = 2*scrollDiv.current.scrollHeight
     }
     const scrollDiv=useRef()
     return ( <><div ref={scrollDiv} className={styles.message_container}>
@@ -296,6 +296,7 @@ function MessageContainer({messages,DisplayMessageArr}) {
             return <Message key={index} myMsg={msg.myMsg} data={msg.data}  type={msg.type} text={msg.description} sent={msg.sent}/>
         })
     }
+    {scrollBottom()}
     
     </div>
     </> );

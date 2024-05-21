@@ -91,8 +91,21 @@ function ModalProfileEdit({user,setUser}) {
   }
   const onSubmit=(values)=>{
     console.log("values",FormIkRef.current.values)
-
+    if( typeof FormIkRef.current.values.image === "string"){
+      console.log("image not added using existing")
+      const req_body = {
+        id:user._id,
+        name:FormIkRef.current.values.name,
+        password:FormIkRef.current.values.password,
+        image:FormIkRef.current.values.image
+    }
+    mutate(req_body)
+    }else{
+      console.log("image added")
       uploadFileMutation(FormIkRef.current.values.image)
+}
+
+      
 
     }
   return (

@@ -9,6 +9,7 @@ import { createContext, useState } from "react";
 import io from "socket.io-client"
 import FindPeople from "./find";
 import Profile from "./profile";
+import useLocalStorage from "../utils/customHooks.js/useLocalStorage";
 const socket = io.connect(process.env.REACT_APP_API_URL, {
     transports: ['websocket'],
     secure: true,  // Ensure secure connection
@@ -19,7 +20,8 @@ export const MenuContext = createContext()
 
 
 export function MainComp() {
-    const [user,setUser]=useState()
+    // const [user,setUser]=useState()
+    const [user,setUser] = useLocalStorage("user")
     const [menuOpen,setmenuOpen] = useState(false)
     const [selectedFriend,setSelectedFriend]=useState()
     if(user!=null){

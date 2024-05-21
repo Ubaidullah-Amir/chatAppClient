@@ -17,7 +17,7 @@ export function Frienditem({item}) {
                     :<img style={{height:"100%",width:"100%",borderRadius:"50%",objectFit:"cover"}} src={defaultUserImage} alt="profile image" />
                 }
             </div>
-            <p className={selectedFriend._id === item._id ?"selectedFriendinList":""} style={{flexShrink:"0",margin:"0"}} >{item.name}</p>
+            <p className={selectedFriend?._id === item._id ?"selectedFriendinList":""} style={{flexShrink:"0",margin:"0"}} >{item.name}</p>
         </div>
      );
 }
@@ -33,7 +33,7 @@ export function FriendList({userID}) {
         return <p>Error Occured.</p>
     }
     const filteredFriends=friends?.filter((friend)=>{
-        return friend.name.toLowerCase().includes(filterSearch)
+        return friend.name.toLowerCase().includes(filterSearch.toLowerCase())
     })
     return ( 
     <div>
