@@ -17,7 +17,9 @@ function NavBar({disable}) {
     <>
       <Navbar expand="lg" bg="dark" variant="dark">
         <Container>
+          
           <div className="menubtn" style={location.pathname != "/" ? {display:'none'}:{}}>
+            menuBtn
             <input id="dropdown" className="input-box" type="checkbox" checked={menuOpen} onChange = {handleChange} style={{display:"none"}}/>
 
             <label htmlFor="dropdown" className="dropdown">
